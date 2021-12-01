@@ -1,4 +1,7 @@
 package com.CTDECommerce.ECommerce.model.repository;
 
-public interface CategoryRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+
+public interface CategoryRepository extends JpaRepository {
 }
