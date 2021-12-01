@@ -22,7 +22,7 @@ public class CategoryEntity {
     @Column(name="name")
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy ="category")
+    @OneToMany(fetch = FetchType.LAZY)
     private Set<ProductEntity> product=new HashSet<>();
 
 

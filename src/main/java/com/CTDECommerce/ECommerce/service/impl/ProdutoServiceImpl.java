@@ -1,37 +1,48 @@
 package com.CTDECommerce.ECommerce.service.impl;
 
+import com.CTDECommerce.ECommerce.model.dto.ProductDTO;
 import com.CTDECommerce.ECommerce.model.entities.ProductEntity;
-import com.CTDECommerce.ECommerce.model.repository.impl.ProductRepositoryImpl;
+import com.CTDECommerce.ECommerce.model.repository.ProductRepository;
 import com.CTDECommerce.ECommerce.service.ECommerceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
-public class ProdutoServiceImpl implements ECommerceService <ProductEntity>{
+public class ProdutoServiceImpl implements ECommerceService <ProductDTO> {
 
     @Autowired
-    private ProductRepositoryImpl productRepository;
-
+    private ProductRepository productRepository;
 
 
     @Override
-    public ProductEntity salvar(ProductEntity productEntity) {
-        ProductEntity product=productRepository.save(productEntity);
-        return product;
+    public ProductDTO salvar(ProductDTO productDTO) {
+        ProductEntity product= new ProductEntity(productDTO);
+        productRepository.saveAndFlush(product);
+        ProductDTO productDTO1=new ProductDTO(product);
+        return productDTO1;
     }
 
     @Override
-    public List<ProductEntity> buscarTodos() {
-        List<ProductEntity> products=productRepository.findAll();
-        return products;
+    public List<ProductDTO> buscarTodos() {
+        List<ProductEntity> productEntities = productRepository.findAll();
+        List<ProductDTO> productDTOList = new ArrayList<>();
+        if (productEntities != null){
+            for (ProductEntity product : productEntities){
+                ProductDTO productDTO = new ProductDTO(product);
+                productDTOList.add(productDTO);
+            }
+            return productDTOList;
+        }
+        return null;
     }
 
     @Override
-    public Optional<ProductEntity> buscarPorId(Long id) {
-        Optional<ProductEntity> product=productRepository.findById(id);
-        return product;
+    public ProductDTO buscarPorId(Long id) {
+        ProductDTO productDTO=new ProductDTO(productRepository.getById(id));
+
+        return productDTO;
     }
 }

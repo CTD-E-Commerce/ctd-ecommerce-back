@@ -50,7 +50,8 @@ public class ProductEntity {
         this.id = productDTO.getId();
         this.title = productDTO.getTitle();
         this.price = productDTO.getPrice();
-        this.description = productDTO.setDescription();
+        this.categoryEntity = productDTO.getCategory();
+        this.description = productDTO.getDescription();
         this.image = productDTO.getImage();
     }
 }
