@@ -1,5 +1,6 @@
 package com.CTDECommerce.ECommerce.model.entities;
 
+import com.CTDECommerce.ECommerce.model.dto.CategoryDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +12,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name="Category")
-class CategoryEntity {
+public class CategoryEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,4 +25,18 @@ class CategoryEntity {
     @OneToMany(fetch = FetchType.LAZY, mappedBy ="category")
     private Set<ProductEntity> product=new HashSet<>();
 
+
+    public CategoryEntity() {
+    }
+
+    public CategoryEntity(Long id, String name, Set<ProductEntity> product) {
+        this.id = id;
+        this.name = name;
+        this.product = product;
+    }
+
+    public CategoryEntity(CategoryDTO categoryDTO){
+        this.id= categoryDTO.getId();
+        this.name= categoryDTO.getName();
+    }
 }
