@@ -23,8 +23,8 @@ public class ProductDTO {
         this.title = product.getTitle();
         this.price = product.getPrice();
         this.category = product.getCategoryEntity().getName();
-        this.description = description;
-        this.image = image;
+        this.description = product.getDescription();
+        this.image = product.getImage();
     }
 
 }
