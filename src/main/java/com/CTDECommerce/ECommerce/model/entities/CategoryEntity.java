@@ -18,8 +18,8 @@ class CategoryEntity {
     @Column(name="id")
     private Long id;
 
-    @Column(name="nome")
-    private String nome;
+    @Column(name="name")
+    private String name;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy ="category")
     private Set<ProductEntity> product=new HashSet<>();
