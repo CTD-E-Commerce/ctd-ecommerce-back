@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(name="Product")
+@Table(name="product")
 public class ProductEntity {
 
     @Id
@@ -31,7 +31,7 @@ public class ProductEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn (name="category_id")
-    private CategoryEntity categoryEntity;
+    private CategoryEntity category;
 
     public ProductEntity() {
     }
@@ -43,7 +43,7 @@ public class ProductEntity {
         this.price = price;
         this.description = description;
         this.image = image;
-        this.categoryEntity = categoryEntity;
+        this.category = categoryEntity;
     }
 
     public ProductEntity(ProductDTO productDTO) {

@@ -1,13 +1,13 @@
 package com.CTDECommerce.ECommerce.controller;
 
 import com.CTDECommerce.ECommerce.model.dto.ProductDTO;
+import com.CTDECommerce.ECommerce.model.entities.CategoryEntity;
 import com.CTDECommerce.ECommerce.service.impl.ProdutoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/products")
@@ -20,13 +20,14 @@ public class ProductController {
     public ResponseEntity salvar(@RequestBody ProductDTO product){
         ProductDTO productDTO = produtoService.salvar(product);
         if(productDTO!=null)
-        return ResponseEntity.ok(productDTO);
+            return ResponseEntity.ok(productDTO);
 
         return ResponseEntity.badRequest().body("Produto nao cadatradado");
     }
 
     @GetMapping("/buscartodos")
     public ResponseEntity<List<ProductDTO>>findAll(){
+
         return ResponseEntity.ok(produtoService.buscarTodos());
     }
 
@@ -36,8 +37,10 @@ public class ProductController {
         ProductDTO productDTO = produtoService.buscarPorId(id);
         return ResponseEntity.ok(productDTO);
     }
-    @GetMapping("/category/{bala}")
-    public ResponseEntity<ProductDTO>findbycategory(@PathVariable Long bala){
-        return ResponseEntity.ok(produtoService.busrcarPorCategoria(bala));
+
+    @GetMapping("/category/{category}")
+    public ResponseEntity<ProductDTO>findbycategory(@PathVariable Long category){
+        ProductDTO productDTO =produtoService.buscarPorCategoria(category);
+        return ResponseEntity.ok(productDTO);
     }
 }
