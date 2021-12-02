@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public abstract class CategoryRepositoryImpl implements CategoryRepository {
     @Query("select c from category c where c.id=?1")

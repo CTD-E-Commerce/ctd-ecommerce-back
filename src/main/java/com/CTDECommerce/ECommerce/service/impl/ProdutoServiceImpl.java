@@ -56,14 +56,14 @@ public class ProdutoServiceImpl implements ECommerceService <ProductDTO> {
         return productDTO;
     }
 
-   public ProductDTO buscarPorCategoria(Long category){
-       LOG.info("Iniciando buscar por todos produtos da categoria " + category + ".");
-        ProductEntity productEntities = productRepository.findByCategory(category);
+   public List<ProductDTO> buscarPorCategoria(String category){
+       LOG.info("Iniciando buscar por todos produtos da caregoria " + category + ".");
+        List<ProductEntity> productEntities = productRepository.findByCategoryName(category);
        LOG.info("Tratando dados do banco de dados.");
-        ProductDTO productDTO= new ProductDTO(productEntities);
+//        ProductDTO productDTO= new ProductDTO(productEntities);
        LOG.info("Listando todos produtos da categoria " + category + ".");
-        return productDTO;
-            //return trasformardto(productEntities);
+//        return productDTO;
+            return trasformardto(productEntities);
     }
 
 
