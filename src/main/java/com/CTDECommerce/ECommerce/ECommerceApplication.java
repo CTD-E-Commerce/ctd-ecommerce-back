@@ -14,5 +14,4 @@ public class ECommerceApplication {
 		SpringApplication.run(ECommerceApplication.class, args);
 		LOG.info("Api E-commerce iniciado com sucesso.");
 	}
-
 }

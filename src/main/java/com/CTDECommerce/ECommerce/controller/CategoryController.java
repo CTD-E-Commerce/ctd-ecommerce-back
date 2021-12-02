@@ -38,6 +38,4 @@ public class CategoryController {
         CategoryDTO categoryDTO = categoryService.buscarPorNome(name);
         return ResponseEntity.ok(categoryDTO);
     }
-
-
 }
