@@ -25,7 +25,6 @@ public class CategoryEntity {
     @OneToMany(fetch = FetchType.EAGER)
     private Set<ProductEntity> product=new HashSet<>();
 
-
     public CategoryEntity() {
     }
 
