@@ -57,7 +57,7 @@ public class ProdutoServiceImpl implements ECommerceService <ProductDTO> {
     }
 
    public ProductDTO buscarPorCategoria(Long category){
-       LOG.info("Iniciando buscar por todos produtos da caregoria " + category + ".");
+       LOG.info("Iniciando buscar por todos produtos da categoria " + category + ".");
         ProductEntity productEntities = productRepository.findByCategory(category);
        LOG.info("Tratando dados do banco de dados.");
         ProductDTO productDTO= new ProductDTO(productEntities);
