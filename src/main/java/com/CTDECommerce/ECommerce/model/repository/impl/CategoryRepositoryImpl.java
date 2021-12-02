@@ -9,9 +9,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public abstract class CategoryRepositoryImpl implements CategoryRepository {
-    @Query("select c from category c where c.id=?1")
+    @Query("select c from category c where c.id = ?1")
     public abstract CategoryEntity findByName(String nameCategory);
+
+    @Query("select c.name from category c where c.id = ?1")
+    public abstract List<String> findAllName();
 }

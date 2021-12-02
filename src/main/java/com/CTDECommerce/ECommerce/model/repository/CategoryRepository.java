@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface CategoryRepository extends JpaRepository<CategoryEntity,Long> {
     CategoryEntity findByName(String nameCategory);
+
+    List<String> findAllName();
 }

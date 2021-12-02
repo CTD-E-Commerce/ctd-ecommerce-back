@@ -30,16 +30,14 @@ public class ProdutoServiceImpl implements ECommerceService <ProductDTO> {
         ProductEntity product= new ProductEntity(productDTO);
         CategoryEntity category= categoryRepository.findByName(productDTO.getCategory());
         if(category==null){
-            LOG.info("Não existe essa categoria.");
+            LOG.info("Não existe a categoria " + productDTO.getCategory() + ".");
             return null;
         }
         product.setCategory(category);
-
-
-        productRepository.save(product);
-        ProductDTO productDTO1=new ProductDTO(product);
-        LOG.info("Produto criado com sucesso.");
-        return productDTO1;
+        productRepository.saveAndFlush(product);
+        ProductDTO productDTOSalvo=new ProductDTO(product);
+        LOG.info("Produto " + productDTOSalvo.getTitle() + " criado com sucesso.");
+        return productDTOSalvo;
     }
 
     @Override
@@ -58,12 +56,9 @@ public class ProdutoServiceImpl implements ECommerceService <ProductDTO> {
 
    public List<ProductDTO> buscarPorCategoria(String category){
        LOG.info("Iniciando buscar por todos produtos da caregoria " + category + ".");
-        List<ProductEntity> productEntities = productRepository.findByCategoryName(category);
-       LOG.info("Tratando dados do banco de dados.");
-//        ProductDTO productDTO= new ProductDTO(productEntities);
+       List<ProductEntity> productEntities = productRepository.findByCategoryName(category);
        LOG.info("Listando todos produtos da categoria " + category + ".");
-//        return productDTO;
-            return trasformardto(productEntities);
+       return trasformardto(productEntities);
     }
 
 

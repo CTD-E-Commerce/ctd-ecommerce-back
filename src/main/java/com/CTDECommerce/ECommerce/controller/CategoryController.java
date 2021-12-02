@@ -27,6 +27,11 @@ public class CategoryController {
         return ResponseEntity.ok(categoryService.buscarTodos());
     }
 
+    @GetMapping("/buscartodos/name")
+    public ResponseEntity<List<String>>findAllName(){
+        return ResponseEntity.ok(categoryService.buscarTodosString());
+    }
+
     @GetMapping("/id/{id}")
     public ResponseEntity buscarPorId(@PathVariable Long id) {
         CategoryDTO categoryDTO = categoryService.buscarPorId(id);
@@ -34,7 +39,7 @@ public class CategoryController {
     }
 
     @GetMapping("/name/{name}")
-    public ResponseEntity buscarPorId(@PathVariable String name) {
+    public ResponseEntity buscarPorName(@PathVariable String name) {
         CategoryDTO categoryDTO = categoryService.buscarPorNome(name);
         return ResponseEntity.ok(categoryDTO);
     }

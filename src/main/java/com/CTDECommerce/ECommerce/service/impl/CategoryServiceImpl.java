@@ -15,7 +15,7 @@ import java.util.List;
 
 @Service
 public class CategoryServiceImpl implements ECommerceService<CategoryDTO> {
-    private static final Logger LOG = LoggerFactory.getLogger(ProdutoServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CategoryServiceImpl.class);
 
     @Autowired
     private CategoryRepository categoryRepository;
@@ -57,5 +57,10 @@ public class CategoryServiceImpl implements ECommerceService<CategoryDTO> {
         CategoryDTO categoryDTO=new CategoryDTO(categoryRepository.findByName(name));
         LOG.info("Resultado da busca pela categoria " + name + ".");
         return categoryDTO;
+    }
+
+    public List<String> buscarTodosString() {
+        LOG.info("Lista de categorias.");
+        return categoryRepository.findAllName();
     }
 }
