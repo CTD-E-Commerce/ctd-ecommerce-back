@@ -1,7 +1,6 @@
 package com.CTDECommerce.ECommerce.controller;
 
 import com.CTDECommerce.ECommerce.model.dto.ProductDTO;
-import com.CTDECommerce.ECommerce.model.entities.CategoryEntity;
 import com.CTDECommerce.ECommerce.service.impl.ProdutoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -39,8 +38,8 @@ public class ProductController {
     }
 
     @GetMapping("/category/{category}")
-    public ResponseEntity<ProductDTO>findbycategory(@PathVariable Long category){
-        ProductDTO productDTO =produtoService.buscarPorCategoria(category);
+    public ResponseEntity<List<ProductDTO>> findbycategory(@PathVariable String category){
+        List<ProductDTO> productDTO =produtoService.buscarPorCategoria(category);
         return ResponseEntity.ok(productDTO);
     }
 }
