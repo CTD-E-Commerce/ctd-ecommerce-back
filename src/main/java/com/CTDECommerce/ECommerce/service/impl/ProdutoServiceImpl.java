@@ -29,7 +29,7 @@ public class ProdutoServiceImpl implements ECommerceService <ProductDTO> {
         if(category==null){
             return null;
         }
-        product.setCategoryEntity(category);
+        product.setCategory(category);
 
 
         productRepository.save(product);
@@ -50,13 +50,13 @@ public class ProdutoServiceImpl implements ECommerceService <ProductDTO> {
         return productDTO;
     }
 
-   /* public ProductDTO busrcarPorCategoria(Long category){
-        ProductEntity productEntities = productRepository.findByCat(category);
+   public ProductDTO busrcarPorCategoria(String category){
+        ProductEntity productEntities = productRepository.findByCategory(category);
 
         ProductDTO productDTO= new ProductDTO(productEntities);
         return productDTO;
             //return trasformardto(productEntities);
-    }*/
+    }
 
 
     public List<ProductDTO> trasformardto(List<ProductEntity> productEntities){

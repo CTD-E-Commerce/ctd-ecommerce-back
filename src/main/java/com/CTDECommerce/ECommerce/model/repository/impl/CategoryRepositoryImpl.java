@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public abstract class CategoryRepositoryImpl implements CategoryRepository {
-    @Query("select c from category c where c.name=?1")
+    @Query("select c from category c where c.id=?1")
     public abstract CategoryEntity findByName(String nameCategory);
 }
