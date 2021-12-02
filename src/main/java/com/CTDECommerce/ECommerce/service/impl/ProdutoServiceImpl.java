@@ -6,6 +6,7 @@ import com.CTDECommerce.ECommerce.model.entities.CategoryEntity;
 import com.CTDECommerce.ECommerce.model.entities.ProductEntity;
 import com.CTDECommerce.ECommerce.model.repository.CategoryRepository;
 import com.CTDECommerce.ECommerce.model.repository.ProductRepository;
+import com.CTDECommerce.ECommerce.model.repository.impl.ProductRepositoryImpl;
 import com.CTDECommerce.ECommerce.service.ECommerceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,13 +51,13 @@ public class ProdutoServiceImpl implements ECommerceService <ProductDTO> {
         return productDTO;
     }
 
-   /* public ProductDTO busrcarPorCategoria(Long category){
-        ProductEntity productEntities = productRepository.findByCat(category);
+    public ProductDTO busrcarPorCategoria(Long category){
+        ProductEntity productEntities = productRepository.findByCategory_id(category);
 
         ProductDTO productDTO= new ProductDTO(productEntities);
         return productDTO;
             //return trasformardto(productEntities);
-    }*/
+    }
 
 
     public List<ProductDTO> trasformardto(List<ProductEntity> productEntities){

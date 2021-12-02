@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/products")
@@ -35,8 +36,8 @@ public class ProductController {
         ProductDTO productDTO = produtoService.buscarPorId(id);
         return ResponseEntity.ok(productDTO);
     }
-    /*@GetMapping("/category/{bala}")
+    @GetMapping("/category/{bala}")
     public ResponseEntity<ProductDTO>findbycategory(@PathVariable Long bala){
         return ResponseEntity.ok(produtoService.busrcarPorCategoria(bala));
-    }*/
+    }
 }

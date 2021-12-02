@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 
 public interface ProductRepository extends JpaRepository<ProductEntity ,Long> {
-    //ProductEntity findByCat(Long Category);
+    ProductEntity findByCategory_id(Long category_id);
 }

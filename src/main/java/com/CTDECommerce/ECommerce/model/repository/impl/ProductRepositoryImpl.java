@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public abstract class ProductRepositoryImpl implements ProductRepository {
-    @Query("select * from product p where p.category_id=?1")
-    public abstract ProductEntity findByCat(Long Category);
+    @Query("select * from product inner join category on category.id = product.category_id where category.id=?1")
+    public abstract ProductEntity findByCategory_id(Long category);
 
 
 }

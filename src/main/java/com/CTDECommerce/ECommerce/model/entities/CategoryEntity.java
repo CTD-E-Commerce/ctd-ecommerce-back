@@ -22,16 +22,16 @@ public class CategoryEntity {
     @Column(name="name")
     private String name;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    /*@OneToMany(fetch = FetchType.EAGER)
     private Set<ProductEntity> product=new HashSet<>();
-
+*/
     public CategoryEntity() {
     }
 
-    public CategoryEntity(Long id, String name, Set<ProductEntity> product) {
+    public CategoryEntity(Long id, String name) {
         this.id = id;
         this.name = name;
-        this.product = product;
+        //this.product = product;
     }
 
     public CategoryEntity(CategoryDTO categoryDTO){
