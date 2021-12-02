@@ -27,9 +27,15 @@ public class CategoryController {
         return ResponseEntity.ok(categoryService.buscarTodos());
     }
 
-    @GetMapping("/buscar/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity buscarPorId(@PathVariable Long id) {
         CategoryDTO categoryDTO = categoryService.buscarPorId(id);
+        return ResponseEntity.ok(categoryDTO);
+    }
+
+    @GetMapping("/name/{name}")
+    public ResponseEntity buscarPorId(@PathVariable String name) {
+        CategoryDTO categoryDTO = categoryService.buscarPorNome(name);
         return ResponseEntity.ok(categoryDTO);
     }
 

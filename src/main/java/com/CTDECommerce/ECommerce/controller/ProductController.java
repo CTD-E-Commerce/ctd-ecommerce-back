@@ -27,6 +27,7 @@ public class ProductController {
 
     @GetMapping("/buscartodos")
     public ResponseEntity<List<ProductDTO>>findAll(){
+
         return ResponseEntity.ok(produtoService.buscarTodos());
     }
 
@@ -37,8 +38,9 @@ public class ProductController {
         return ResponseEntity.ok(productDTO);
     }
 
-    @GetMapping("/category/{bala}")
-    public ResponseEntity<ProductDTO>findbycategory(@PathVariable String bala){
-        return ResponseEntity.ok(produtoService.busrcarPorCategoria(bala));
+    @GetMapping("/category/{category}")
+    public ResponseEntity<ProductDTO>findbycategory(@PathVariable Long category){
+        ProductDTO productDTO =produtoService.buscarPorCategoria(category);
+        return ResponseEntity.ok(productDTO);
     }
 }
