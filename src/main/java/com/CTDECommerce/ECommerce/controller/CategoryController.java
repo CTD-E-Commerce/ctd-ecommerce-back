@@ -17,9 +17,17 @@ public class CategoryController {
 
 
     @PostMapping
-    public ResponseEntity<CategoryDTO> salvar(@RequestBody CategoryDTO category){
-        CategoryDTO categoryDTO = categoryService.salvar(category);
-        return ResponseEntity.ok(categoryDTO);
+    public ResponseEntity<CategoryDTO> salvar(@RequestBody CategoryDTO category) {
+        List<CategoryDTO> categoryDTOList = categoryService.buscarTodos();
+        CategoryDTO categoryDTO1 = null;
+        for (CategoryDTO categoryDTO : categoryDTOList) {
+            if (category.getName().equals(categoryDTO.getName())) {
+                return null;
+            }
+        }
+
+        categoryDTO1 = categoryService.salvar(category);
+        return ResponseEntity.ok(categoryDTO1);
     }
 
     @GetMapping("/buscartodos")
@@ -27,7 +35,7 @@ public class CategoryController {
         return ResponseEntity.ok(categoryService.buscarTodos());
     }
 
-    @GetMapping("/buscartodos/name")
+    @GetMapping("/buscartodosname")
     public ResponseEntity<List<String>>findAllName(){
         return ResponseEntity.ok(categoryService.buscarTodosString());
     }

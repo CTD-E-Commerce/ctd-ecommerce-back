@@ -16,6 +16,6 @@ public abstract class CategoryRepositoryImpl implements CategoryRepository {
     @Query("select c from category c where c.id = ?1")
     public abstract CategoryEntity findByName(String nameCategory);
 
-    @Query("select c.name from category c where c.id = ?1")
-    public abstract List<String> findAllName();
+    @Query("select c.name from category c")
+    public abstract List<String> findAllByName();
 }
