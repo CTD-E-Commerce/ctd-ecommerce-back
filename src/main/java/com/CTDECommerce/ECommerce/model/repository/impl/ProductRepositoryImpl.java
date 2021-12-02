@@ -5,13 +5,11 @@ import com.CTDECommerce.ECommerce.model.repository.ProductRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
 
 @Repository
 public abstract class ProductRepositoryImpl implements ProductRepository {
-
-    @Query("select p from product p where p.nome=?1")
-    public abstract Optional<ProductEntity> findByName(String nameProduct);
+    @Query("select * from product p where p.category_id=?1")
+    public abstract ProductEntity findByCat(Long Category);
 
 
 }

@@ -16,9 +16,12 @@ public class ProductController {
     private ProdutoServiceImpl produtoService;
 
     @PostMapping
-    public ResponseEntity<ProductDTO> salvar(@RequestBody ProductDTO product){
+    public ResponseEntity salvar(@RequestBody ProductDTO product){
         ProductDTO productDTO = produtoService.salvar(product);
+        if(productDTO!=null)
         return ResponseEntity.ok(productDTO);
+
+        return ResponseEntity.badRequest().body("Produto nao cadatradado");
     }
 
     @GetMapping("/buscartodos")
@@ -32,4 +35,8 @@ public class ProductController {
         ProductDTO productDTO = produtoService.buscarPorId(id);
         return ResponseEntity.ok(productDTO);
     }
+    /*@GetMapping("/category/{bala}")
+    public ResponseEntity<ProductDTO>findbycategory(@PathVariable Long bala){
+        return ResponseEntity.ok(produtoService.busrcarPorCategoria(bala));
+    }*/
 }
