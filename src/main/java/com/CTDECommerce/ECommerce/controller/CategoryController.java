@@ -17,15 +17,29 @@ public class CategoryController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping
-    public ResponseEntity<CategoryDTO> salvar(@RequestBody CategoryDTO category){
-        CategoryDTO categoryDTO = categoryService.salvar(category);
-        return ResponseEntity.ok(categoryDTO);
+    public ResponseEntity<CategoryDTO> salvar(@RequestBody CategoryDTO category) {
+        List<CategoryDTO> categoryDTOList = categoryService.buscarTodos();
+        CategoryDTO categoryDTO1 = null;
+        for (CategoryDTO categoryDTO : categoryDTOList) {
+            if (category.getName().equals(categoryDTO.getName())) {
+                return null;
+            }
+        }
+
+        categoryDTO1 = categoryService.salvar(category);
+        return ResponseEntity.ok(categoryDTO1);
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/buscartodos")
     public ResponseEntity<List<CategoryDTO>>findAll(){
         return ResponseEntity.ok(categoryService.buscarTodos());
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/buscartodosname")
+    public ResponseEntity<List<String>>findAllName(){
+        return ResponseEntity.ok(categoryService.buscarTodosString());
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
@@ -37,7 +51,7 @@ public class CategoryController {
 
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/name/{name}")
-    public ResponseEntity buscarPorId(@PathVariable String name) {
+    public ResponseEntity buscarPorName(@PathVariable String name) {
         CategoryDTO categoryDTO = categoryService.buscarPorNome(name);
         return ResponseEntity.ok(categoryDTO);
     }

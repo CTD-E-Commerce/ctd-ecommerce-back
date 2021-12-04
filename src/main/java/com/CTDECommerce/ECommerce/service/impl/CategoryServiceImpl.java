@@ -11,11 +11,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 
 @Service
 public class CategoryServiceImpl implements ECommerceService<CategoryDTO> {
-    private static final Logger LOG = LoggerFactory.getLogger(ProdutoServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CategoryServiceImpl.class);
 
     @Autowired
     private CategoryRepository categoryRepository;
@@ -23,9 +24,9 @@ public class CategoryServiceImpl implements ECommerceService<CategoryDTO> {
 
     @Override
     public CategoryDTO salvar(CategoryDTO categoryDTO) {
-        CategoryEntity category= new CategoryEntity(categoryDTO);
+        CategoryEntity category = new CategoryEntity(categoryDTO);
         categoryRepository.saveAndFlush(category);
-        CategoryDTO categoryDTO1=new CategoryDTO(category);
+        CategoryDTO categoryDTO1 = new CategoryDTO(category);
         LOG.info("Categoria criada com sucesso.");
         return categoryDTO1;
     }
@@ -34,8 +35,8 @@ public class CategoryServiceImpl implements ECommerceService<CategoryDTO> {
     public List<CategoryDTO> buscarTodos() {
         List<CategoryEntity> categorylist = categoryRepository.findAll();
         List<CategoryDTO> categoryDTOList = new ArrayList<>();
-        if (categorylist != null){
-            for (CategoryEntity categoryEntity : categorylist){
+        if (categorylist != null) {
+            for (CategoryEntity categoryEntity : categorylist) {
                 CategoryDTO categoryDTO = new CategoryDTO(categoryEntity);
                 categoryDTOList.add(categoryDTO);
             }
@@ -48,14 +49,32 @@ public class CategoryServiceImpl implements ECommerceService<CategoryDTO> {
 
     @Override
     public CategoryDTO buscarPorId(Long id) {
-        CategoryDTO categoryDTO=new CategoryDTO(categoryRepository.getById(id));
+        CategoryDTO categoryDTO = new CategoryDTO(categoryRepository.getById(id));
         LOG.info("Resultado da busca pela categoria com o id " + id + ".");
         return categoryDTO;
     }
 
     public CategoryDTO buscarPorNome(String name) {
-        CategoryDTO categoryDTO=new CategoryDTO(categoryRepository.findByName(name));
+        CategoryDTO categoryDTO = new CategoryDTO(categoryRepository.findByName(name));
         LOG.info("Resultado da busca pela categoria " + name + ".");
         return categoryDTO;
+    }
+
+    public List<String> buscarTodosString() {
+        List<CategoryEntity> categorylist = categoryRepository.findAll();
+        List<String> stringList = new ArrayList<>();
+        if (categorylist != null) {
+            for (CategoryEntity categoryEntity : categorylist) {
+                String name = categoryEntity.getName();
+                stringList.add(name);
+            }
+            return stringList;
+        }
+        return null;
+    /*public List<String> buscarTodosString() {
+        LOG.info("Lista de categorias.");
+        return categoryRepository.findByName();
+    }*/
+
     }
 }
