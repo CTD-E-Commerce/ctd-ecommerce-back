@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/categories")
 public class CategoryController {
@@ -15,7 +16,6 @@ public class CategoryController {
     @Autowired
     private CategoryServiceImpl categoryService;
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping
     public ResponseEntity<CategoryDTO> salvar(@RequestBody CategoryDTO category) {
         List<CategoryDTO> categoryDTOList = categoryService.buscarTodos();
@@ -30,26 +30,22 @@ public class CategoryController {
         return ResponseEntity.ok(categoryDTO1);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/buscartodos")
     public ResponseEntity<List<CategoryDTO>>findAll(){
         return ResponseEntity.ok(categoryService.buscarTodos());
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/buscartodosname")
     public ResponseEntity<List<String>>findAllName(){
         return ResponseEntity.ok(categoryService.buscarTodosString());
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/id/{id}")
     public ResponseEntity buscarPorId(@PathVariable Long id) {
         CategoryDTO categoryDTO = categoryService.buscarPorId(id);
         return ResponseEntity.ok(categoryDTO);
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/name/{name}")
     public ResponseEntity buscarPorName(@PathVariable String name) {
         CategoryDTO categoryDTO = categoryService.buscarPorNome(name);
