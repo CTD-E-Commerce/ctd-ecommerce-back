@@ -1,0 +1,79 @@
+	Metodos de Category "/categories"
+
+	""
+	Salvar
+	Para salvar novas categories.
+		https://ctd-ecommerce-api.herokuapp.com/categories
+		Forma de passar os dados:
+		{
+    			"name": "creme"
+		}
+
+
+	"/buscartodos"
+	Lista todas as categorias cadastradas, Json na forma de objeto.
+		https://ctd-ecommerce-api.herokuapp.com/categories/buscartodos
+		[{"id":1,"name":"perfumaria"},{"id":2,"name":"shampoo"},{"id":3,"name":"creme"}]
+
+
+	"/buscartodosname"
+	Lista todas as categorias cadastradas, Json na forma de um array de string.
+		https://ctd-ecommerce-api.herokuapp.com/categories/buscartodosname
+		["perfumaria","shampoo","creme"]
+
+
+	"/buscar/{id}"
+	Lista a categoria cadastrada com o {id} informado, Json na forma de objeto.
+		https://ctd-ecommerce-api.herokuapp.com/categories/buscar/01
+		{"id":1,"name":"perfumaria"}
+
+
+	"/name/{name}"
+	Lista a categoria cadastrada com o {name} informado, Json na forma de objeto.
+		https://ctd-ecommerce-api.herokuapp.com/categories/name/shampoo
+		{"id":2,"name":"shampoo"}
+
+	###########################################################################
+
+	Metodos de Products "/products"
+
+	""
+	Salvar
+	Para salvar novos produtos.
+		https://ctd-ecommerce-api.herokuapp.com/products
+		Forma de passar os dados:
+		{
+			"title":"Essencial Supreme Deo Parfum",
+			"description":"Combinação entre o patchouli, amadeirado intenso, com a sensualidade e o calor do ishpink, a canela amazônica",
+			"price": 117.90,
+			"category":"perfumaria",
+			"image":"https://static.natura.com/cdn/ff/CG4lbHLHtt_3S9uQLiRKySVdijdDScjwkPaNJ8AQIjI/1620755547/public/2021-05/95560_caminho_olfativo.jpg"
+		}
+
+
+	"/buscartodos"
+	Lista todas os produtos cadastrados, Json na forma de objeto.
+		https://ctd-ecommerce-api.herokuapp.com/products/buscartodos
+		[{"id":1,"title":"Essencial Supreme Deo Parfum","price":117.9,"category":"perfumaria","description":"Combinação entre o patchouli, amadeirado intenso,
+	 com a sensualidade e o calor do ishpink, a canela amazônica","image":"https://static.natura.com/cdn/ff/CG4lbHLHtt_3S9uQLiRKySVdijdDScjwkPaNJ8AQIjI/1620755547
+	/public/2021-05/95560_caminho_olfativo.jpg"},{"id":2,"title":"Essencial Supreme Deo Parfum","price":118.9,"category":"perfumaria","description":"Combinação 
+	entre o patchouli, amadeirado intenso, com a sensualidade e o calor do ishpink, a canela amazônica","image":"https://static.natura.com/cdn/ff/CG4lbHLHtt_3S9
+	uQLiRKySVdijdDScjwkPaNJ8AQIjI/1620755547/public/2021-05/95560_caminho_olfativo.jpg"}]
+
+
+	"/buscar/{id}"
+	Lista o produto cadastrado com o {id} informado, Json na forma de objeto.
+		https://ctd-ecommerce-api.herokuapp.com/products/buscar/1
+		{"id":1,"title":"Essencial Supreme Deo Parfum","price":117.9,"category":"perfumaria","description":"Combinação entre o patchouli, amadeirado intenso, 
+	com a sensualidade e o calor do ishpink, a canela amazônica","image":"https://static.natura.com/cdn/ff/CG4lbHLHtt_3S9uQLiRKySVdijdDScjwkPaNJ8AQIjI/1620755547
+	/public/2021-05/95560_caminho_olfativo.jpg"}
+
+
+	""/category/{category}""
+	Lista todos produtos cadastrados que pertence a {category} informada, Json na forma de objeto.
+		https://ctd-ecommerce-api.herokuapp.com/products/category/perfumaria
+		[{"id":1,"title":"Essencial Supreme Deo Parfum","price":117.9,"category":"perfumaria","description":"Combinação entre o patchouli, amadeirado intenso,
+	 com a sensualidade e o calor do ishpink, a canela amazônica","image":"https://static.natura.com/cdn/ff/CG4lbHLHtt_3S9uQLiRKySVdijdDScjwkPaNJ8AQIjI/1620755547
+	/public/2021-05/95560_caminho_olfativo.jpg"},{"id":2,"title":"Essencial Supreme Deo Parfum","price":118.9,"category":"perfumaria","description":"Combinação 
+	entre o patchouli, amadeirado intenso, com a sensualidade e o calor do ishpink, a canela amazônica","image":"https://static.natura.com/cdn/ff/CG4lbHLHtt_3S9
+	uQLiRKySVdijdDScjwkPaNJ8AQIjI/1620755547/public/2021-05/95560_caminho_olfativo.jpg"}]
