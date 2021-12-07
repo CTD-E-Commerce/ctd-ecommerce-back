@@ -64,7 +64,7 @@ public class ProductEntity {
         this.title = productDTO.getTitle();
         this.avaliacao = productDTO.getAvaliacao();
         this.numaval = productDTO.getNumaval();
-        this.price = productDTO.getPrice();
+        this.price = Double.parseDouble(productDTO.getPrice());
         this.shortdescription = productDTO.getShortdescription();
         this.fulldescription = productDTO.getFulldescription();
         this.image = productDTO.getImage();

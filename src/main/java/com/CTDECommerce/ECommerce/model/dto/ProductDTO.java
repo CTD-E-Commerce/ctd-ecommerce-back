@@ -12,7 +12,7 @@ public class ProductDTO {
     private String title;
     private Double avaliacao;
     private Integer numaval;
-    private Double price;
+    private String price;
     private String category;
     private String shortdescription;
     private String fulldescription;
@@ -26,14 +26,14 @@ public class ProductDTO {
         this.title = product.getTitle();
         this.avaliacao = product.getAvaliacao();
         this.numaval = product.getNumaval();
-        this.price = product.getPrice();
+        this.price = String.format("%.2f", product.getPrice());
         this.category = product.getCategory().getName();
         this.shortdescription = product.getShortdescription();
         this.fulldescription = product.getFulldescription();
         this.image = product.getImage();
     }
 
-    public ProductDTO(Long id, String title, Double avaliacao, Integer numaval, Double price, String category,
+    public ProductDTO(Long id, String title, Double avaliacao, Integer numaval, String price, String category,
                       String shortdescription, String fulldescription, String image) {
         this.id = id;
         this.title = title;
