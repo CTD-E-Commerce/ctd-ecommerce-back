@@ -10,9 +10,12 @@ public class ProductDTO {
 
     private Long id;
     private String title;
+    private Double avaliacao;
+    private Integer numaval;
     private Double price;
     private String category;
-    private String description;
+    private String shortdescription;
+    private String fulldescription;
     private String image;
 
     public ProductDTO() {
@@ -21,18 +24,25 @@ public class ProductDTO {
     public ProductDTO(ProductEntity product) {
         this.id = product.getId();
         this.title = product.getTitle();
+        this.avaliacao = product.getAvaliacao();
+        this.numaval = product.getNumaval();
         this.price = product.getPrice();
         this.category = product.getCategory().getName();
-        this.description = product.getDescription();
+        this.shortdescription = product.getShortdescription();
+        this.fulldescription = product.getFulldescription();
         this.image = product.getImage();
     }
 
-    public ProductDTO(Long id, String title, Double price, String category, String description, String image) {
+    public ProductDTO(Long id, String title, Double avaliacao, Integer numaval, Double price, String category,
+                      String shortdescription, String fulldescription, String image) {
         this.id = id;
         this.title = title;
+        this.avaliacao = avaliacao;
+        this.numaval = numaval;
         this.price = price;
         this.category = category;
-        this.description = description;
+        this.shortdescription = shortdescription;
+        this.fulldescription = fulldescription;
         this.image = image;
     }
 }

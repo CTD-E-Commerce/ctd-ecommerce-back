@@ -20,11 +20,20 @@ public class ProductEntity {
     @Column(name="title")
     private String title;
 
+    @Column(name="avaliacao")
+    private Double avaliacao;
+
+    @Column(name="num_avaliacao")
+    private Integer numaval;
+
     @Column(name="price")
     private Double price;
 
-    @Column(name="description")
-    private String description;
+    @Column(name="shortdescription")
+    private String shortdescription;
+
+    @Column(name="fulldescription")
+    private String fulldescription;
 
     @Column(name="image")
     private String image;
@@ -36,21 +45,28 @@ public class ProductEntity {
     public ProductEntity() {
     }
 
-    public ProductEntity(Long id, String title, Double price, String description, String image,
-                         CategoryEntity categoryEntity) {
+    public ProductEntity(Long id, String title, Double avaliacao, Integer numaval, Double price,
+                         String shortdescription, String fulldescription, String image, CategoryEntity category) {
         this.id = id;
         this.title = title;
+        this.avaliacao = avaliacao;
+        this.numaval = numaval;
         this.price = price;
-        this.description = description;
+        this.shortdescription = shortdescription;
+        this.fulldescription = fulldescription;
         this.image = image;
-        this.category = categoryEntity;
+        this.category = category;
     }
 
     public ProductEntity(ProductDTO productDTO) {
+
         this.id = productDTO.getId();
         this.title = productDTO.getTitle();
+        this.avaliacao = productDTO.getAvaliacao();
+        this.numaval = productDTO.getNumaval();
         this.price = productDTO.getPrice();
-        this.description = productDTO.getDescription();
+        this.shortdescription = productDTO.getShortdescription();
+        this.fulldescription = productDTO.getFulldescription();
         this.image = productDTO.getImage();
     }
 }
