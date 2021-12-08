@@ -43,4 +43,17 @@ public class ProductController {
         List<ProductDTO> productDTO =produtoService.buscarPorCategoria(category);
         return ResponseEntity.ok(productDTO);
     }
+
+//    @GetMapping("/novidades")
+//    public List<ProductDTO>findAll(){
+//
+//        return produtoService.novidades();
+//    }
+//
+//    @GetMapping("/maisvendidos")
+//    public List<ProductDTO>findAll(){
+//
+//        return produtoService.maisVendidos();
+//    }
+
 }
