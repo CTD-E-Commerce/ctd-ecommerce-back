@@ -1,6 +1,5 @@
 package com.CTDECommerce.ECommerce.service.impl;
 
-
 import com.CTDECommerce.ECommerce.model.dto.ProductDTO;
 import com.CTDECommerce.ECommerce.model.entities.CategoryEntity;
 import com.CTDECommerce.ECommerce.model.entities.ProductEntity;
@@ -11,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,11 +52,47 @@ public class ProdutoServiceImpl implements ECommerceService <ProductDTO> {
         return productDTO;
     }
 
-   public List<ProductDTO> buscarPorCategoria(String category){
+    public List<ProductDTO> buscarPorCategoria(String category){
        LOG.info("Iniciando buscar por todos produtos da caregoria " + category + ".");
        List<ProductEntity> productEntities = productRepository.findByCategoryName(category);
        LOG.info("Listando todos produtos da categoria " + category + ".");
        return trasformardto(productEntities);
+    }
+
+    public List<ProductDTO> novidades(){
+        LOG.info("Iniciando buscar por novidades");
+        List<ProductDTO> todosProdutos = buscarTodos();
+        List<ProductDTO> listaNovidades = new ArrayList<>();
+        for (int i=0; i<6; i++) {
+            int index=0;
+            if (i !=0) {
+                index = (i * 6) - 1;
+            } else {
+                index =30;
+            }
+            ProductDTO product = todosProdutos.get(index);
+            listaNovidades.add(product);
+        }
+        LOG.info("Listando novidades");
+        return listaNovidades;
+    }
+
+    public List<ProductDTO> maisVendidos(){
+        LOG.info("Iniciando buscar por novidades");
+        List<ProductDTO> todosProdutos = buscarTodos();
+        List<ProductDTO> listaNovidades = new ArrayList<>();
+        for (int i=0; i<6; i++) {
+            int index=0;
+            if (i !=0) {
+                index = (i * 6) - 3;
+            } else {
+                index =29;
+            }
+            ProductDTO product = todosProdutos.get(index);
+            listaNovidades.add(product);
+        }
+        LOG.info("Listando novidades");
+        return listaNovidades;
     }
 
 

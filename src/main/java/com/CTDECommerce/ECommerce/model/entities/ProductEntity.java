@@ -32,6 +32,7 @@ public class ProductEntity {
     @Column(name="shortdescription")
     private String shortdescription;
 
+    @Lob
     @Column(name="fulldescription")
     private String fulldescription;
 

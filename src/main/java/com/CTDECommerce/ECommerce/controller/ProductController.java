@@ -26,9 +26,9 @@ public class ProductController {
     }
 
     @GetMapping("/buscartodos")
-    public List<ProductDTO>findAll(){
+    public ResponseEntity<List<ProductDTO>> findAll(){
 
-        return produtoService.buscarTodos();
+        return ResponseEntity.ok(produtoService.buscarTodos());
     }
 
     @GetMapping("/buscar/{id}")
@@ -44,16 +44,15 @@ public class ProductController {
         return ResponseEntity.ok(productDTO);
     }
 
-//    @GetMapping("/novidades")
-//    public List<ProductDTO>findAll(){
-//
-//        return produtoService.novidades();
-//    }
-//
-//    @GetMapping("/maisvendidos")
-//    public List<ProductDTO>findAll(){
-//
-//        return produtoService.maisVendidos();
-//    }
+    @GetMapping("/novidades")
+    public ResponseEntity<List<ProductDTO>> listaDeNovidade(){
+        return ResponseEntity.ok(produtoService.novidades());
+    }
+
+    @GetMapping("/maisvendidos")
+    public ResponseEntity<List<ProductDTO>> listaMaisVendidos(){
+
+        return ResponseEntity.ok(produtoService.maisVendidos());
+    }
 
 }
