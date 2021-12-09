@@ -19,18 +19,8 @@ public class CategoryServiceImpl implements ECommerceService<CategoryDTO> {
     @Autowired
     private CategoryRepository categoryRepository;
 
-
     @Override
-    public CategoryDTO salvar(CategoryDTO categoryDTO) {
-        CategoryEntity category = new CategoryEntity(categoryDTO);
-        categoryRepository.saveAndFlush(category);
-        CategoryDTO categoryDTO1 = new CategoryDTO(category);
-        LOG.info("Categoria criada com sucesso.");
-        return categoryDTO1;
-    }
-
-    @Override
-    public List<CategoryDTO> buscarTodos() {
+    public List<CategoryDTO> findAll() {
         List<CategoryEntity> categorylist = categoryRepository.findAll();
         List<CategoryDTO> categoryDTOList = new ArrayList<>();
         if (categorylist != null) {
@@ -46,19 +36,19 @@ public class CategoryServiceImpl implements ECommerceService<CategoryDTO> {
     }
 
     @Override
-    public CategoryDTO buscarPorId(Long id) {
+    public CategoryDTO findById(Long id) {
         CategoryDTO categoryDTO = new CategoryDTO(categoryRepository.getById(id));
         LOG.info("Resultado da busca pela categoria com o id " + id + ".");
         return categoryDTO;
     }
 
-    public CategoryDTO buscarPorNome(String name) {
+    public CategoryDTO findByNameCategory(String name) {
         CategoryDTO categoryDTO = new CategoryDTO(categoryRepository.findByName(name));
         LOG.info("Resultado da busca pela categoria " + name + ".");
         return categoryDTO;
     }
 
-    public List<String> buscarTodosString() {
+    public List<String> findAllStringCategory() {
         List<CategoryEntity> categorylist = categoryRepository.findAll();
         List<String> stringList = new ArrayList<>();
         if (categorylist != null) {
@@ -69,10 +59,5 @@ public class CategoryServiceImpl implements ECommerceService<CategoryDTO> {
             return stringList;
         }
         return null;
-    /*public List<String> buscarTodosString() {
-        LOG.info("Lista de categorias.");
-        return categoryRepository.findByName();
-    }*/
-
     }
 }

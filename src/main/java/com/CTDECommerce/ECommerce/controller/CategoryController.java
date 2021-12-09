@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins="*", allowedHeaders="")
 @RestController
 @RequestMapping("/categories")
 public class CategoryController {
@@ -16,39 +16,26 @@ public class CategoryController {
     @Autowired
     private CategoryServiceImpl categoryService;
 
-    @PostMapping
-    public ResponseEntity<CategoryDTO> salvar(@RequestBody CategoryDTO category) {
-        List<CategoryDTO> categoryDTOList = categoryService.buscarTodos();
-        CategoryDTO categoryDTO1 = null;
-        for (CategoryDTO categoryDTO : categoryDTOList) {
-            if (category.getName().equals(categoryDTO.getName())) {
-                return null;
-            }
-        }
-
-        categoryDTO1 = categoryService.salvar(category);
-        return ResponseEntity.ok(categoryDTO1);
-    }
 
     @GetMapping("/buscartodos")
     public ResponseEntity<List<CategoryDTO>>findAll(){
-        return ResponseEntity.ok(categoryService.buscarTodos());
+        return ResponseEntity.ok(categoryService.findAll());
     }
 
     @GetMapping("/buscartodosname")
     public ResponseEntity<List<String>>findAllName(){
-        return ResponseEntity.ok(categoryService.buscarTodosString());
+        return ResponseEntity.ok(categoryService.findAllStringCategory());
     }
 
     @GetMapping("/buscar/{id}")
-    public ResponseEntity buscarPorId(@PathVariable Long id) {
-        CategoryDTO categoryDTO = categoryService.buscarPorId(id);
+    public ResponseEntity findBYId(@PathVariable Long id) {
+        CategoryDTO categoryDTO = categoryService.findById(id);
         return ResponseEntity.ok(categoryDTO);
     }
 
     @GetMapping("/name/{name}")
-    public ResponseEntity buscarPorName(@PathVariable String name) {
-        CategoryDTO categoryDTO = categoryService.buscarPorNome(name);
+    public ResponseEntity findByName(@PathVariable String name) {
+        CategoryDTO categoryDTO = categoryService.findByNameCategory(name);
         return ResponseEntity.ok(categoryDTO);
     }
 }

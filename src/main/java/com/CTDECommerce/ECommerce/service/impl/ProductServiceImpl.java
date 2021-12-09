@@ -1,7 +1,6 @@
 package com.CTDECommerce.ECommerce.service.impl;
 
 import com.CTDECommerce.ECommerce.model.dto.ProductDTO;
-import com.CTDECommerce.ECommerce.model.entities.CategoryEntity;
 import com.CTDECommerce.ECommerce.model.entities.ProductEntity;
 import com.CTDECommerce.ECommerce.model.repository.CategoryRepository;
 import com.CTDECommerce.ECommerce.model.repository.ProductRepository;
@@ -14,8 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ProdutoServiceImpl implements ECommerceService <ProductDTO> {
-    private static final Logger LOG = LoggerFactory.getLogger(ProdutoServiceImpl.class);
+public class ProductServiceImpl implements ECommerceService <ProductDTO> {
+    private static final Logger LOG = LoggerFactory.getLogger(ProductServiceImpl.class);
 
     @Autowired
     private ProductRepository productRepository;
@@ -23,46 +22,32 @@ public class ProdutoServiceImpl implements ECommerceService <ProductDTO> {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    @Override
-    public ProductDTO salvar(ProductDTO productDTO) {
-        ProductEntity product= new ProductEntity(productDTO);
-        CategoryEntity category= categoryRepository.findByName(productDTO.getCategory());
-        if(category==null){
-            LOG.info("Não existe a categoria " + productDTO.getCategory() + ".");
-            return null;
-        }
-        product.setCategory(category);
-        productRepository.saveAndFlush(product);
-        ProductDTO productDTOSalvo=new ProductDTO(product);
-        LOG.info("Produto " + productDTOSalvo.getTitle() + " criado com sucesso.");
-        return productDTOSalvo;
-    }
 
     @Override
-    public List<ProductDTO> buscarTodos() {
+    public List<ProductDTO> findAll() {
         List<ProductEntity> productEntities = productRepository.findAll();
         LOG.info("Listando todos produtos.");
-        return trasformardto(productEntities);
+        return transformDTO(productEntities);
     }
 
     @Override
-    public ProductDTO buscarPorId(Long id) {
+    public ProductDTO findById(Long id) {
         ProductDTO productDTO=new ProductDTO(productRepository.getById(id));
         LOG.info("Resultado da busca pelo produto com id " + id + ".");
         return productDTO;
     }
 
-    public List<ProductDTO> buscarPorCategoria(String category){
+    public List<ProductDTO> findByCategory(String category){
        LOG.info("Iniciando buscar por todos produtos da caregoria " + category + ".");
        List<ProductEntity> productEntities = productRepository.findByCategoryName(category);
        LOG.info("Listando todos produtos da categoria " + category + ".");
-       return trasformardto(productEntities);
+       return transformDTO(productEntities);
     }
 
-    public List<ProductDTO> novidades(){
+    public List<ProductDTO> newProducts(){
         LOG.info("Iniciando buscar por novidades");
-        List<ProductDTO> todosProdutos = buscarTodos();
-        List<ProductDTO> listaNovidades = new ArrayList<>();
+        List<ProductDTO> allProducts = findAll();
+        List<ProductDTO> newsList = new ArrayList<>();
         for (int i=0; i<6; i++) {
             int index=0;
             if (i !=0) {
@@ -70,17 +55,17 @@ public class ProdutoServiceImpl implements ECommerceService <ProductDTO> {
             } else {
                 index =30;
             }
-            ProductDTO product = todosProdutos.get(index);
-            listaNovidades.add(product);
+            ProductDTO product = allProducts.get(index);
+            newsList.add(product);
         }
         LOG.info("Listando novidades");
-        return listaNovidades;
+        return newsList;
     }
 
-    public List<ProductDTO> maisVendidos(){
+    public List<ProductDTO> bestSellersProducts(){
         LOG.info("Iniciando buscar por novidades");
-        List<ProductDTO> todosProdutos = buscarTodos();
-        List<ProductDTO> listaNovidades = new ArrayList<>();
+        List<ProductDTO> allProducts = findAll();
+        List<ProductDTO> newsList = new ArrayList<>();
         for (int i=0; i<6; i++) {
             int index=0;
             if (i !=0) {
@@ -88,15 +73,15 @@ public class ProdutoServiceImpl implements ECommerceService <ProductDTO> {
             } else {
                 index =29;
             }
-            ProductDTO product = todosProdutos.get(index);
-            listaNovidades.add(product);
+            ProductDTO product = allProducts.get(index);
+            newsList.add(product);
         }
-        LOG.info("Listando novidades");
-        return listaNovidades;
+        LOG.info("Listando mais vendidos");
+        return newsList;
     }
 
 
-    public List<ProductDTO> trasformardto(List<ProductEntity> productEntities){
+    public List<ProductDTO> transformDTO(List<ProductEntity> productEntities){
         List<ProductDTO> productDTOList = new ArrayList<>();
         if (productEntities != null) {
             for (ProductEntity product : productEntities) {
@@ -108,6 +93,6 @@ public class ProdutoServiceImpl implements ECommerceService <ProductDTO> {
         }
         LOG.info("Lista nula no banco de dados.");
         return null;
-
     }
+
 }
