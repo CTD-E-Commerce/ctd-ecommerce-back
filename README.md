@@ -21,6 +21,15 @@
 - Banco de dados
     - H2
     - MYSQL
+
+### Links Back-End:
+
+#### [Link Documentação da API](https://notch-tiglon-21b.notion.site/Amar-e-Cuidar-Cosm-ticos-ba030697b4014482acbc9c077bc6eded)
+
+#### [Link da API no Heroku](https://ctd-ecommerce-api.herokuapp.com)
+
+#### [Link da API no AWS Elastic Beanstalk](http://turmadoisgrupodois-env.eba-e8scz79c.us-east-1.elasticbeanstalk.com)
+
     
     ## Prototipação do banco H2
     
@@ -73,3 +82,4 @@
     INSERT INTO product ( id, title, avaliacao, num_avaliacao, price, category_id, shortdescription, fulldescription, image) VALUES ( null, 'Vitamina C Biossance', 4.9, 96, 339.00, 5, 'Óleo Facial Biossance de Vitamina C com Rosas e Esqualano 30ml.', 'Óleo que tem o poder de iluminar, firmar, reduzir visivelmente a aparência de linhas, além de uniformizar a aparência e o toque da pele. Vegano, cruelty-free, livre de ingredientes nocivos para você e o meio ambiente. Melhora a elasticidade e a firmeza. Reduz a aparência das linhas de expressão e rugas. Uniformiza o tom e melhora a textura da pele. Protege contra a Luz Azul, impedindo o envelhecimento da pele.', 'https://amarecuidar.s3.sa-east-1.amazonaws.com/skin_care/vitamina-biossance.jpg');
     
     ```
+
