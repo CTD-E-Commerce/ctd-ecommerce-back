@@ -6,15 +6,18 @@ Essas instruções permitirão que você obtenha uma cópia do projeto em opera�
 
 ### 📋 Pré-requisitos
 
-    - Primeiro, instale o Java 11 ou versões superiores e Maven 3.6.2 ou versões superiores.
+- Primeiro, instale o Java 11 ou versões superiores e Maven 3.6.2 ou versões superiores.
     
-    - Para executar o projeto no terminal, digite o seguinte comando em um terrminal que esteja na pasta onde foi feito o git clone desse repositorio: 
+- Para executar o projeto no terminal, digite o seguinte comando em um terrminal que esteja na pasta onde foi feito o git clone desse repositorio: 
+
 
 ```
 mvn spring-boot:run
 ```
+   
+   
+- Após executar o comando acima, basta apenas abrir o seguinte endereço e visualizar a execução do projeto:
     
-    - Após executar o comando acima, basta apenas abrir o seguinte endereço e visualizar a execução do projeto:
     
 ```
 http://localhost:5000/
