@@ -22,16 +22,17 @@
     - H2
     - MYSQL
 
-### Links Back-End:
+- Links Back-End:
 
-#### [Link Documentação da API](https://notch-tiglon-21b.notion.site/Amar-e-Cuidar-Cosm-ticos-ba030697b4014482acbc9c077bc6eded)
+    - [Link Documentação da API](https://notch-tiglon-21b.notion.site/Amar-e-Cuidar-Cosm-ticos-ba030697b4014482acbc9c077bc6eded)
 
-#### [Link da API no Heroku](https://ctd-ecommerce-api.herokuapp.com)
+    - [Link da API no Heroku](https://ctd-ecommerce-api.herokuapp.com)
 
-#### [Link da API no AWS Elastic Beanstalk](http://turmadoisgrupodois-env.eba-e8scz79c.us-east-1.elasticbeanstalk.com)
+    - [Link da API no AWS Elastic Beanstalk](http://turmadoisgrupodois-env.eba-e8scz79c.us-east-1.elasticbeanstalk.com)
 
     
-    ## Prototipação do banco H2
+## Prototipação do banco H2
+    
     
     ```sql
     
