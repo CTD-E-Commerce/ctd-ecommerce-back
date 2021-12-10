@@ -1,7 +1,31 @@
-# Tecnologias utilizadas
+# Projeto Integrador - Back-end
+
+## 🚀 Começando
+
+Essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste.
+
+### 📋 Pré-requisitos
+
+    - Primeiro, instale o Java 11 ou versões superiores e Maven 3.6.2 ou versões superiores.
+    
+    - Para executar o projeto no terminal, digite o seguinte comando em um terrminal que esteja na pasta onde foi feito o git clone desse repositorio: 
+
+    ```
+    mvn spring-boot:run
+    ```
+    - Após executar o comando acima, basta apenas abrir o seguinte endereço e visualizar a execução do projeto:
+    
+    ```
+    http://localhost:5000/
+    ```
+
+
+
+## 🛠️ Tecnologias utilizadas
 
 - Linguagem:
     - Java 11
+    - Maven
     
 - ORM
     - Spring Data JPA
@@ -21,6 +45,8 @@
 - Banco de dados
     - H2
     - MYSQL
+
+## 🌐Acesse a aplicação
 
 - Links Back-End:
 
