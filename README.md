@@ -13,6 +13,7 @@ Essas instruções permitirão que você obtenha uma cópia do projeto em opera�
     ```
     mvn spring-boot:run
     ```
+    
     - Após executar o comando acima, basta apenas abrir o seguinte endereço e visualizar a execução do projeto:
     
     ```
@@ -109,4 +110,3 @@ Essas instruções permitirão que você obtenha uma cópia do projeto em opera�
     INSERT INTO product ( id, title, avaliacao, num_avaliacao, price, category_id, shortdescription, fulldescription, image) VALUES ( null, 'Vitamina C Biossance', 4.9, 96, 339.00, 5, 'Óleo Facial Biossance de Vitamina C com Rosas e Esqualano 30ml.', 'Óleo que tem o poder de iluminar, firmar, reduzir visivelmente a aparência de linhas, além de uniformizar a aparência e o toque da pele. Vegano, cruelty-free, livre de ingredientes nocivos para você e o meio ambiente. Melhora a elasticidade e a firmeza. Reduz a aparência das linhas de expressão e rugas. Uniformiza o tom e melhora a textura da pele. Protege contra a Luz Azul, impedindo o envelhecimento da pele.', 'https://amarecuidar.s3.sa-east-1.amazonaws.com/skin_care/vitamina-biossance.jpg');
     
     ```
-
