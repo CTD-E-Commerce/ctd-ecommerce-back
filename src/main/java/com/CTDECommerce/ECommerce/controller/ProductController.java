@@ -30,7 +30,7 @@ public class ProductController {
     }
 
     @GetMapping("/category/{category}")
-    public ResponseEntity<List<ProductDTO>> findbycategory(@PathVariable String category){
+    public ResponseEntity<List<ProductDTO>> findByCategory(@PathVariable String category){
         List<ProductDTO> productDTO = productService.findByCategory(category);
         return ResponseEntity.ok(productDTO);
     }
